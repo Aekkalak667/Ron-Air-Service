@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PP. Air - สถิติผู้เข้าชม</title>
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="analytics.css">
+</head>
+
+<body>
+    <div class="app-container analytics-page">
+        <!-- Loading -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+            <p>กำลังโหลดข้อมูล...</p>
+        </div>
+
+        <!-- Header -->
+        <div class="page-header">
+            <a href="index.html" class="back-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </a>
+            <h1>สถิติผู้เข้าชม</h1>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon total">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value" id="totalVisits">-</span>
+                    <span class="stat-label">เข้าชมทั้งหมด</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon today">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value" id="todayVisits">-</span>
+                    <span class="stat-label">วันนี้</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon unique">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value" id="uniqueIPs">-</span>
+                    <span class="stat-label">IP ไม่ซ้ำ</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Chart Section -->
+        <div class="bento-card">
+            <h3 class="card-title">ยอดเข้าชมรายวัน (7 วันล่าสุด)</h3>
+            <div class="daily-chart" id="dailyChart">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
+
+        <!-- IP List -->
+        <div class="bento-card">
+            <h3 class="card-title">รายละเอียด IP วันนี้</h3>
+            <div class="ip-list" id="ipList">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
+
+        <!-- Terminal Log -->
+        <div class="bento-card terminal-card">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="terminal-legend">
+                    <span class="legend-item"><span class="leg-time">เวลา</span></span>
+                    <span class="legend-item"><span class="leg-status">สถานะ</span></span>
+                    <span class="legend-item"><span class="leg-ip">IP</span></span>
+                    <span class="legend-item"><span class="leg-isp">ISP</span></span>
+                    <span class="legend-item"><span class="leg-page">หน้า</span></span>
+                </div>
+                <span class="terminal-title">visitor.log</span>
+            </div>
+            <div class="terminal-body" id="terminalLog">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="analytics.js"></script>
+</body>
+
+</html>

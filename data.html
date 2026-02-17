@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PP. Air & Electric - ข้อมูลนัดหมาย</title>
+    <meta name="description" content="ตารางข้อมูลนัดหมายทั้งหมด">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="data.css">
+</head>
+
+<body>
+    <div class="data-page">
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+            <p>กำลังโหลดข้อมูล...</p>
+        </div>
+
+        <!-- Header -->
+        <header class="data-header">
+            <div class="header-left">
+                <a href="index.html" class="back-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                </a>
+                <div class="header-title">
+                    <h1>ข้อมูลนัดหมาย</h1>
+                    <span class="data-count" id="dataCount">0 รายการ</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-export" id="exportBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Export
+                </button>
+            </div>
+        </header>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <div class="search-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" id="searchInput" placeholder="ค้นหาชื่อ, เบอร์โทร, ที่อยู่...">
+            </div>
+            <div class="filter-chips">
+                <button class="chip active" data-filter="all">ทั้งหมด</button>
+                <button class="chip" data-filter="pending">รอดำเนินการ</button>
+                <button class="chip" data-filter="completed">เสร็จสิ้น</button>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="table-container">
+            <table class="data-table" id="dataTable">
+                <thead>
+                    <tr>
+                        <th class="col-date" data-sort="date">
+                            วันที่
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
+                        </th>
+                        <th class="col-name">ชื่อลูกค้า</th>
+                        <th class="col-phone">เบอร์โทร</th>
+                        <th class="col-address">ที่อยู่</th>
+                        <th class="col-ac">แอร์</th>
+                        <th class="col-status">สถานะ</th>
+                        <th class="col-notes">หมายเหตุ</th>
+                        <th class="col-actions">จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data rows will be rendered here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+            <p>ไม่พบข้อมูล</p>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="data.js"></script>
+</body>
+
+</html>
